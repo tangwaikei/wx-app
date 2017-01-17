@@ -1,0 +1,35 @@
+<view class='container'>
+	<view class='header'>
+		<view class='title'>我的订单</view>
+	</view>	
+	<scroll-view scroll-y='true' scroll-top="300">
+		<view wx:for="{{orderList}}" wx:key="name" class='order'>
+			<view class='tip' hidden='{{item.pay>0}}'>(未提交)</view>
+			<view class='shop-name'>
+				<view>{{item.name}}</view>
+			</view>
+			<view class='line'>
+			</view>
+			<view wx:for="{{item.order}}" wx:key="name" wx:for-item="order" class='order-container'>
+				<view class='inside-container'>
+					<view class='order-name'>{{order.name}}</view>
+					<view class='order-count'>x{{order.num}}</view>		
+				</view>						
+			</view>
+			<view class='total'>
+				<view class='order-name'>合计</view>
+				 <view class='order-total'>￥{{item.total}}</view>	
+			</view>
+		</view>		
+		<view class='line-cut' hidden='{{total<=0 && pay<=0}}'></view>
+		<view class='confirm-container' hidden='{{total<=0 && pay <= 0}}'>
+			<view class='left-container'>合计：￥{{total}}</view>
+			<view class='right-container'><view class='confirm-btn' bindtap='confirm'>去结算</view></view>		
+		</view>
+	</scroll-view>	
+	<view hidden='{{is_empty}}' class='img-container'>
+		<view class='empty-container'>
+			<image src="/imgs/shop/empty.png" class='empty'/>
+		</view>	
+	</view>	
+</view>

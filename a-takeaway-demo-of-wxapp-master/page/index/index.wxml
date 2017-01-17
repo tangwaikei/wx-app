@@ -1,0 +1,59 @@
+<view class="container">
+	<view class="header {{scrollDown?'scrolled':''}}">
+		<view class="location ellipsis" bindtap="toNearby">
+			<image class="icon" src="/imgs/index/icon_location.png"/>
+			{{address}}
+		</view>
+		<view class="search" bindtap="tapSearch" style='display:none'>
+			<image class="icon" src="/imgs/index/icon_search.png"/>
+			<i class="fa fa-home"></i>
+			烤鸭
+		</view>
+	</view>
+
+	<scroll-view scroll-y="true" scroll-into-view="{{scrollIntoView}}" bindscroll="onScroll">
+		<swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="500">
+			<block wx:for="{{banners}}" wx:key="id">
+				<swiper-item>
+					<image bindtap="tapBanner" data-id="{{index}}" src="{{item.img}}"/>
+				</swiper-item>
+			</block>
+		</swiper>
+
+		<swiper class="section icons" indicator-dots="true" autoplay="" interval="" duration="500">
+			<swiper-item wx:for="{{icons}}" wx:for-item="list" wx:key="id">
+				<view class="icon" wx:for="{{list}}" wx:for-item="icon" wx:key="id" bindtap="toNearby">
+					<image src="{{icon.img}}"/>
+					<text>{{icon.name}}</text>
+				</view>
+			</swiper-item>
+		</swiper>
+
+		<view id="nearby" class="section section-big nearby">
+			<view class="title">附近商家</view>
+			<view class="filters">
+				<view class="filter {{filterId==1?'active':''}}" data-id="1" bindtap="tapFilter">综合排序<text class="v">↓</text>
+				</view>
+				<view class="filter {{filterId==2?'active':''}}" data-id="2" bindtap="tapFilter">销量最高<text class="v">↓</text>
+				</view>
+				<view class="filter {{filterId==3?'active':''}}" data-id="3" bindtap="tapFilter">距离最近<text class="v">↓</text>
+				</view>
+			</view>
+			<view class="shop" wx:for="{{shops}}" wx:key="id">
+				<navigator url="/page/shop/shop?id={{item.id}}" style="width: 100%; height: 100%">
+					<view class='shop-container'>	
+						<view class='shop-logo'><image src="{{item.logo}}" style="height: 100%"/></view>
+						<view class='shop-detail'>
+							<view class='shop-name'>{{item.restaurant_name}}</view>
+							<view class='shop-data'>
+								<view class='start-price'>起送价：¥{{item.start_price}}</view>
+								<view class='send-price'>配送费：¥{{item.send_price}}</view>
+								<view class='send-time'> <i class='send-time-icon'></i>{{item.send_time}}</view>
+							</view>												
+						</view>
+					</view>
+				</navigator>
+			</view>
+		</view>
+	</scroll-view>
+</view>

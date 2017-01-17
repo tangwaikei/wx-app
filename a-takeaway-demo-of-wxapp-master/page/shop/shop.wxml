@@ -1,0 +1,57 @@
+<view class="container">
+	<view class="header {{scrollDown?'hidden':''}}">
+		<image class="logo" src="{{shop.logo}}"/>
+		<view class="name ellipsis">{{shop.restaurant_name}}</view>
+		<view class="welcome ellipsis">公告：欢迎光临{{shop.restaurant_name}}！</view>
+		<view class="follow" bindtap="follow">{{followed?'已收藏':'收藏'}}</view>
+		<view class="line"></view>
+	</view>
+	<view class="content-container">
+		<scroll-view class="classify-container" scroll-y="true">
+			<view class="classify {{classifySeleted==classify.id?'active':''}}" wx:for="{{shop.menu}}" wx:for-item="classify" wx:key="id" data-id="{{classify.id}}" bindtap="tapClassify">
+				<view class="name">{{classify.package}}</view>
+			</view>
+		</scroll-view>
+		<scroll-view class="goods-container" scroll-y="true" scroll-into-view="{{classifyViewed}}" bindscroll="onGoodsScroll">
+			<view wx:for="{{shop.menu}}" wx:for-item="classify" wx:key="id" id="{{classify.id}}">
+				<view class="title">{{classify.package}}</view>
+				<view class="goods" wx:for="{{classify.menu}}" wx:for-item="menu" wx:key="name">
+					<image class="pic" src="{{menu.img ? menu.img : defaultImg}}"></image>
+					<view class="name ellipsis">{{menu.name}}</view>
+					<view class="sold">月售{{menu.sales}}单</view>
+					<view class="price">￥{{menu.price}} <i class='like'></i>({{menu.like > 0 ? menu.like : 0}})</view>
+					<view class="addCart" bindtap="tapAddCart" data-price="{{menu.price}}" data-name="{{menu.name}}" data-pic="{{menu.img}}">
+						<image src="/imgs/shop/plus.png"></image>
+					</view>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+	<view class="cart-detail" hidden="{{!showCartDetail||!cart.count}}">
+		<view class="mask" bindtap="hideCartDetail"></view>
+		<view class="list">
+			<view class="item" wx:for="{{localList}}" wx:key="*this">
+				<view wx:for="{{item}}" wx:key="name" wx:for-item="order" class='cartList'>
+					<view class="name ellipsis inside-content">{{order.name}}</view>					
+					<view class="reduce right-content" data-price="{{order.price}}" data-name="{{order.name}}" bindtap="tapReduceCart">-</view>
+					<view class="num right-content">{{order.num}}</view>
+					<view class="add right-content" data-name="{{order.name}}" data-price="{{order.price}}" bindtap="tapAddCart" data-pic="{{order.img}}">+</view>
+					<view class="total right-content order-price">￥{{order.price * order.num}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="cart">
+		<view class="data" bindtap="showCartDetail">
+			<view class="icon">
+				<image src="/imgs/shop/cart.png"></image>
+				<view class="count">{{cart.count}}</view>
+			</view>
+			<view class="total">￥{{cart.total}}</view>
+		</view>
+		<form bindsubmit="submit" report-submit="true">
+			<!--<view formType="submit" class="submit">去结算</view>-->
+			<button class="yellow {{cart.count?'':'disabled'}}" formType="submit" disabled="{{!cart.count}}">去结算</button>
+		</form>
+	</view>
+</view>

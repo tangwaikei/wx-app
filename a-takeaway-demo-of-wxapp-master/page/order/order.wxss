@@ -1,0 +1,125 @@
+.container{
+    background: #fff;
+}
+page{
+    font-family: "Microsoft Yahei, Arial, Helvetica, sans-serif";
+	font-size: 15px;
+}
+.header{
+    display: block;
+	margin: 0 auto;
+	height: 120rpx;
+	background: #feb70f;
+	padding: 30rpx;
+    color: #000;
+    line-height: 2.4;
+}
+.title{
+    text-align: center;
+    font-size: 20px;
+}
+.order{
+    display: inline-block;
+    width: 100%;
+    height: auto;
+}
+.order-container{
+    width: 100%;
+    height: 60rpx;
+    margin-top:2px;
+}
+.inside-container{
+    width: 70%;
+    height:100%;
+    font-size: 15px;
+    font-family: "Microsoft Yahei, Arial, Helvetica, sans-serif";
+    float: right;
+}
+.order-name{
+    padding-left: 15px;
+    float: left;
+    padding-top: 5px;
+}
+.order-count{
+   padding-left: 170px;
+   padding-top: 5px;
+}
+.order-total{
+    padding-left:110px;
+    padding-top: 5px;
+}
+.shop-name{
+    font-weight: bold;
+    font-size: 18px;
+    font-family: "Microsoft Yahei, Arial, Helvetica, sans-serif";
+    width: 100%;
+    height: 50rpx;
+    padding-left: 10px;
+    padding-top:10px;
+}
+.line{
+    border-bottom: 1px dashed #000;
+    width: 62%;
+    height: 1px;
+    margin-left: 3%;
+    padding-right: 15%
+}
+.line-cut{
+    border-bottom: 1px dashed #000;
+    width: 80%;
+    height: 1px;
+    margin-left: 3%;
+    padding-right: 15%
+}
+.total{
+    width: 60%;
+    float: right;
+    height: 50rpx;
+    font-size: 15px;
+}
+.confirm-btn{
+    width: 135rpx;
+    height: 66rpx;
+    float: right;
+    margin-right: 20px;
+    color: #fff;
+    background-color:#feb70f;
+    font-size: 15px;
+    clear: both;
+    text-align: center;
+    border-radius: 8%;
+    line-height: 36px;
+}
+.img-container{
+    width: 100%;
+    height: 335px;
+}
+.empty-container{
+    margin-left: 145px;
+    margin-top: 200px;
+}
+.empty{
+    width: 100px;
+    height: 100px;
+}
+.confirm-container{
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+.left-container{
+    float: left;
+    margin-left: 69px;
+    line-height: 35px;
+    font-size: 15px;
+}
+.right-container{
+    float: left;
+    margin-left: 85px;
+}
+.tip{
+    display: inline-block;
+    color: orangered;
+    margin-left: 20px;
+}
